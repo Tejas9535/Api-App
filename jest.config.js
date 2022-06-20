@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /*
  * For a detailed explanation regarding each configuration property, visit:
  * https://jestjs.io/docs/configuration
@@ -16,10 +17,10 @@ module.exports = {
   // Automatically clear mock calls, instances, contexts and results before every test
   clearMocks: true,
   moduleNameMapper: {
-    '\\.(css|scss|sass)$': 'identity-obj-proxy'
+    "\\.(css|scss|sass)$": "identity-obj-proxy",
   },
-  transformIgnorePatterns: ['\\.(css|scss|sass)$'],
-  setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
+  transformIgnorePatterns: ["\\.(css|scss|sass)$"],
+  setupFilesAfterEnv: ["<rootDir>/src/setupTests.js"],
 
   // Indicates whether the coverage information should be collected while executing the test
   // collectCoverage: false,
@@ -76,7 +77,7 @@ module.exports = {
   // maxWorkers: "50%",
 
   // An array of directory names to be searched recursively up from the requiring module's location
-  moduleDirectories: ['node_modules', 'testSetup', '<rootDir>/src'],
+  moduleDirectories: ["node_modules", "testSetup", "<rootDir>/src"],
 
   // An array of file extensions your modules use
   // moduleFileExtensions: [
@@ -147,7 +148,7 @@ module.exports = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: 'jsdom'
+  testEnvironment: "jsdom",
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
