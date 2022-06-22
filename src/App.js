@@ -1,22 +1,16 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from "react";
+import { Route, Routes } from "react-router-dom";
+import AnimeNews from "./components/animeNews";
+import Memes from "./components/memesPage";
 
-const App = () => (
-  <div className="App">
-    <header className="App-header">
-      <p>
-        Edit <code>src/App.js</code> and save to reload.
-      </p>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </a>
-    </header>
-  </div>
-);
+const App = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<Memes />} />
+      <Route path="/anime" element={<AnimeNews />} />
+    </Routes>
+  );
+};
 
 export default App;
