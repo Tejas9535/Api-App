@@ -1,59 +1,58 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true,
-        "jest": true
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "extends": [
-        "plugin:react/recommended",
-        "airbnb",
-        "plugin:prettier/recommended"
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "rules": {
+    "prettier/prettier": "warn",
+    "arrow-parens": "off",
+    "semi": ["error", "always"],
+    "block-scoped-var": "error",
+    "no-use-before-define": ["error", { "functions": true, "classes": true }],
+    "no-var": "error",
+    "curly": "error",
+    "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
+    "comma-dangle": "off",
+    "indent": "off",
+    "template-curly-spacing": "off",
+    "eqeqeq": "warn",
+    "no-console": "warn",
+    "padded-blocks": "off",
+    "eol-last": "off",
+    "react/prop-types": [
+      "warn",
+      { "ignore": ["dispatch", "intl", "children"] }
     ],
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react"
+    "react/forbid-prop-types": "off",
+    "import/no-extraneous-dependencies": [2, { "devDependencies": true }],
+    "max-len": ["warn", { "code": 150 }],
+    "prefer-destructuring": "off",
+    "object-curly-newline": ["error", { "consistent": true }],
+    "function-paren-newline": ["error", "consistent"],
+    "jsx-a11y/mouse-events-have-key-events": "warn",
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
     ],
-    "rules": {
-        "arrow-parens": "off",
-        "semi": ["error", "always"],
-        "block-scoped-var": "error",
-        "no-use-before-define": ["error", { "functions": true, "classes": true }],
-        "no-var": "error",
-        "curly": "error",
-        "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
-        "comma-dangle": "off",
-        "indent": "off",
-        "template-curly-spacing": "off",
-        "eqeqeq": "warn",
-        "no-console": "warn",
-        "padded-blocks": "off",
-        "eol-last": "off",
-        "react/prop-types": [
-          "warn",
-          { "ignore": ["dispatch", "intl", "children"] }
-        ],
-        "react/forbid-prop-types": "off",
-        "import/no-extraneous-dependencies": [2, { "devDependencies": true }],
-        "max-len": ["warn", { "code": 150 }],
-        "prefer-destructuring": "off",
-        "object-curly-newline": ["error", { "consistent": true }],
-        "function-paren-newline": ["error", "consistent"],
-        "jsx-a11y/mouse-events-have-key-events": "warn",
-        "react/function-component-definition": [
-          2,
-          {
-            "namedComponents": "arrow-function",
-            "unnamedComponents": "arrow-function"
-          }
-        ],
-        "react/jsx-props-no-spreading": "off",
-        "react/jsx-no-bind": ["warn", { "allowArrowFunctions": true }],
-        "react/no-did-update-set-state": "off"
-      } 
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-no-bind": ["warn", { "allowArrowFunctions": true }],
+    "react/no-did-update-set-state": "off"
+  }
 }
