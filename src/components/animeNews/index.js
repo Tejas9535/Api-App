@@ -1,3 +1,3 @@
-import AnimeNews from "./AnimeNews";
+import AnimeNews from "./container";
 
 export default AnimeNews;

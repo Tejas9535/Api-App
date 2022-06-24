@@ -1,3 +1,3 @@
-import Memes from "./Memes";
+import Memes from "./container";
 
 export default Memes;

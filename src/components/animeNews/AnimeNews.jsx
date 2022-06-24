@@ -1,22 +1,12 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 
-const AnimeNews = () => {
-  const [aniNews, setAniNews] = useState([]);
-  const [loading, setLoading] = useState(true);
+const AnimeNews = (props) => {
+  // eslint-disable-next-line no-unused-vars
+  const { loading, animeNews, error, fetchAnimeNews } = props;
 
   useEffect(() => {
-    axios
-      .get("https://api.jikan.moe/v4/anime/1/news")
-      .then((res) => {
-        return res.data;
-      })
-      .then((data) => {
-        const arry = data.data;
-        setLoading(false);
-        return setAniNews(arry);
-      })
-      .catch((error) => alert("request failed", error));
+    fetchAnimeNews();
   }, []);
 
   return loading ? (
@@ -24,9 +14,9 @@ const AnimeNews = () => {
   ) : (
     <>
       <h1>Anime news</h1>
-      {aniNews &&
-        aniNews.length !== 0 &&
-        aniNews.map((ele) => {
+      {animeNews &&
+        animeNews.length !== 0 &&
+        animeNews.map((ele) => {
           return (
             <div key={ele.mal_id}>
               <div>
@@ -47,6 +37,19 @@ const AnimeNews = () => {
         })}
     </>
   );
+};
+
+AnimeNews.defaultProps = {
+  animeNews: [],
+  loading: false,
+  error: "",
+};
+
+AnimeNews.propTypes = {
+  animeNews: PropTypes.array,
+  loading: PropTypes.bool,
+  error: PropTypes.string,
+  fetchAnimeNews: PropTypes.func.isRequired,
 };
 
 export default AnimeNews;
