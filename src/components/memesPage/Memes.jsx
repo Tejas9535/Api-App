@@ -1,22 +1,12 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+/* eslint-disable no-unused-vars */
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 
-const Memes = () => {
-  const [meme, setMeme] = useState([{ name: "", url: "" }]);
-  const [loading, setLoading] = useState(true);
+const Memes = (props) => {
+  const { loading, memes, error, fetchMeme } = props;
 
   useEffect(() => {
-    axios
-      .get(" https://api.imgflip.com/get_memes")
-      .then((res) => {
-        return res.data;
-      })
-      .then((data) => {
-        const { memes } = data.data;
-        setLoading(false);
-        return setMeme(memes);
-      })
-      .catch((error) => alert("request failed", error));
+    fetchMeme();
   }, []);
 
   return loading ? (
@@ -24,7 +14,7 @@ const Memes = () => {
   ) : (
     <>
       <h1>Memes page</h1>
-      {meme.map((ele) => {
+      {memes.map((ele) => {
         return (
           <div key={ele.id}>
             <div>
@@ -45,4 +35,16 @@ const Memes = () => {
   );
 };
 
+Memes.defaultProps = {
+  memes: [],
+  loading: false,
+  error: "",
+};
+
+Memes.propTypes = {
+  memes: PropTypes.array,
+  loading: PropTypes.bool,
+  error: PropTypes.string,
+  fetchMeme: PropTypes.func.isRequired,
+};
 export default Memes;
