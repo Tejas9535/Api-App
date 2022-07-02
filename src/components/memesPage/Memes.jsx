@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
+import { Card, Heading, Spinner } from "../../common";
 
 const Memes = (props) => {
   const { loading, memes, error, fetchMeme } = props;
@@ -9,29 +10,22 @@ const Memes = (props) => {
     fetchMeme();
   }, []);
 
-  return loading ? (
-    <h3>loading ...</h3>
-  ) : (
-    <>
-      <h1>Memes page</h1>
-      {memes.map((ele) => {
-        return (
-          <div key={ele.id}>
-            <div>
-              <h2>{ele.name}</h2>
-            </div>
-            <span>
-              <img
-                src={ele.url}
-                alt={ele.name}
-                height={ele.height}
-                width={ele.width}
-              />
-            </span>
-          </div>
-        );
-      })}
-    </>
+  return (
+    <div className="dark:bg-neutral-700">
+      <Heading heading="Memes" />
+      {/* <h1>Memes</h1> */}
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div className="flex flex-wrap justify-around m-10">
+          {memes &&
+            memes.length !== 0 &&
+            memes.map((ele) => {
+              return <Card className="basis-1/3 dark:bg-stone-800" {...ele} />;
+            })}
+        </div>
+      )}
+    </div>
   );
 };
 
