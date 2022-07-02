@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
+import { Card, Heading, Spinner } from "../../common";
 
 const AnimeNews = (props) => {
   // eslint-disable-next-line no-unused-vars
@@ -9,33 +10,21 @@ const AnimeNews = (props) => {
     fetchAnimeNews();
   }, []);
 
-  return loading ? (
-    <h3>loading ...</h3>
-  ) : (
-    <>
-      <h1>Anime news</h1>
-      {animeNews &&
-        animeNews.length !== 0 &&
-        animeNews.map((ele) => {
-          return (
-            <div key={ele.mal_id}>
-              <div>
-                <h2>{ele.title}</h2>
-              </div>
-              <div>
-                <h4>{ele.author_username}</h4>
-                <p> {ele.date}</p>
-              </div>
-              <span>
-                <a href={ele.forum_url}>
-                  <img src={ele.images.jpg.image_url} alt={ele.title} />
-                </a>
-              </span>
-              <div>{ele.forum_url}</div>
-            </div>
-          );
-        })}
-    </>
+  return (
+    <div className="dark:bg-neutral-700">
+      <Heading heading="Anime News" />
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div className="flex flex-wrap justify-around m-10 ">
+          {animeNews &&
+            animeNews.length !== 0 &&
+            animeNews.map((ele) => {
+              return <Card className="basis-1/3" {...ele} />;
+            })}
+        </div>
+      )}
+    </div>
   );
 };
 

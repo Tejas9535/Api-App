@@ -2,11 +2,12 @@
 
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  darkMode: "class",
   theme: {
     screens: {
       sm: "480px",
       md: "768px",
-      lg: "976px",
+      lg: "1024px",
       xl: "1440px",
     },
     extend: {},
