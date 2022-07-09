@@ -2,9 +2,9 @@ name: Update-Coverage-Badge
 
 on:
   push:
-    branches: [ "dev", "master" ]
+    branches: ["master" ]
   pull_request:
-    branches: [ "dev","master"]
+    branches: ["master"]
 
 jobs:
   update-coverage-on-readme:
@@ -45,7 +45,7 @@ jobs:
           echo "Summary Html - ${{ steps.coverageComment.outputs.summaryHtml }}"
           
       - name: Create the Badge
-        if: ${{ github.ref == 'refs/heads/dev' || github.ref == 'refs/heads/master' }}
+        if: ${{github.ref == 'refs/heads/master' }}
         uses: schneegans/dynamic-badges-action@v1.0.0
         with:
           auth: ${{ secrets.GIST_SECRET }}
@@ -57,8 +57,8 @@ jobs:
           namedLogo: javascript
           
       - name: Commit & Push changes to Readme
-        if: ${{ github.ref == 'refs/heads/dev' || github.ref == 'refs/heads/master' }}
-        uses: actions-js/push@master || actions-js/push@dev
+        if: ${{ github.ref == 'refs/heads/master' }}
+        uses: actions-js/push@master 
         with:
           message: Update coverage on Readme
           github_token: ${{ secrets.GITHUB_TOKEN }}
