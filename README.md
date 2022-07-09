@@ -1,3 +1,8 @@
+# Jest Coverage Comment
+
+![Auto Updating Bagde](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Tejas9535/e77941b401d5aace94d442094fb912a7/raw/Api-App__main.json)
+![version](https://img.shields.io/github/package-json/v/Tejas9535/Api-App)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
