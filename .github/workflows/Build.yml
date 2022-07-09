@@ -7,7 +7,9 @@ on:
     branches: ["master", "dev"]
 
 jobs:
-  build:
+
+  job1:
+    name: build
     runs-on: ubuntu-latest
 
     strategy:
@@ -28,9 +30,10 @@ jobs:
       - name: Run Linters
         run: npm run lint
 
-  Coverage:
+  job2:
+    name: Coverage
     runs-on: ubuntu-latest
-    needs: build
+    needs: job1
 
     steps:
       - uses: actions/checkout@v3
@@ -51,7 +54,8 @@ jobs:
       - name: Run tests
         run: |
           npx jest --coverage --coverageReporters json-summary
-
+          
+      - name: coverage
         id: coverageComment
         uses: MishaKav/jest-coverage-comment@main
 
