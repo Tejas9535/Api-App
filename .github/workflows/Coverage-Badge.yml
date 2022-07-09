@@ -46,7 +46,7 @@ jobs:
         if: ${{ github.ref == 'refs/heads/dev' || github.ref == 'refs/heads/master' }}
         uses: schneegans/dynamic-badges-action@v1.0.0
         with:
-          auth: ${{ secrets.GIST_SECRET }}
+          auth: ${{ secrets.JEST_COVERAGE_COMMENT }}
           gistID: e77941b401d5aace94d442094fb912a7
           filename: Api-App__main.json
           label: Coverage
