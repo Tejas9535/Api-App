@@ -1,0 +1,64 @@
+name: Update-Coverage-Badge
+
+on:
+  push:
+    branches: [ "dev" ]
+  pull_request:
+    branches: [ "dev" ]
+
+jobs:
+  update-coverage-on-readme:
+    name: Update Coverage on Readme
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: NPM Cache
+        id: npm-cache
+        uses: actions/cache@v2
+        with:
+          persist-credentials: false
+          path: '**/node_modules'
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm
+            
+      - name: Install Dependencies
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: npm ci
+
+      #- name: Run Tests
+       # run: npm run test:coverage | tee ./coverage.txt
+        
+      - name: Jest coverage comment
+        id: coverageComment
+        uses: MishaKav/jest-coverage-comment@main
+        
+        with:
+          hide-comment: true
+          coverage-summary-path: ./coverage/coverage-summary.json
+
+      - name: Check the output coverage
+        run: |
+          echo "Coverage Percantage - ${{ steps.coverageComment.outputs.coverage }}"
+          echo "Coverage Color - ${{ steps.coverageComment.outputs.color }}"
+          echo "Summary Html - ${{ steps.coverageComment.outputs.summaryHtml }}"
+          
+      - name: Create the Badge
+        if: ${{ github.ref == 'refs/heads/dev' || github.ref == 'refs/heads/master' }}
+        uses: schneegans/dynamic-badges-action@v1.0.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: e77941b401d5aace94d442094fb912a7
+          filename: Api-App__main.json
+          label: Coverage
+          message: ${{ steps.coverageComment.outputs.coverage }}%
+          color: ${{ steps.coverageComment.outputs.color }}
+          namedLogo: javascript
+          
+      - name: Commit & Push changes to Readme
+        if: ${{ github.ref == 'refs/heads/dev' || github.ref == 'refs/heads/master' }}
+        uses: actions-js/push@master || actions-js/push@dev
+        with:
+          message: Update coverage on Readme
+          github_token: ${{ secrets.GITHUB_TOKEN }}
