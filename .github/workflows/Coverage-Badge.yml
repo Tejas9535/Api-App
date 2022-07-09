@@ -22,6 +22,7 @@ jobs:
 
       - name: Check the output coverage
         run: |
+          npm run test:coverage
           echo "Coverage Percantage - ${{ steps.coverageComment.outputs.coverage }}"
           echo "Coverage Color - ${{ steps.coverageComment.outputs.color }}"
           echo "Summary Html - ${{ steps.coverageComment.outputs.summaryHtml }}"
