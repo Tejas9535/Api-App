@@ -56,9 +56,9 @@ jobs:
           color: ${{ steps.coverageComment.outputs.color }}
           namedLogo: javascript
           
-      - name: Commit & Push changes to Readme
-        if: ${{ github.ref == 'refs/heads/master' }}
-        uses: actions-js/push@master 
-        with:
-          message: Update coverage on Readme
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+#       - name: Commit & Push changes to Readme
+#         if: ${{ github.ref == 'refs/heads/master' }}
+#         uses: actions-js/push@master 
+#         with:
+#           message: Update coverage on Readme
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
