@@ -25,19 +25,16 @@ jobs:
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm ci
 
-      - name: Check Lint
-        run: npm run lint
-
-      - name: Run Tests
-        run: npm run test:coverage | tee ./coverage.txt
-
+      #- name: Run Tests
+       # run: npm run test:coverage | tee ./coverage.txt
+        
       - name: Jest coverage comment
         id: coverageComment
         uses: MishaKav/jest-coverage-comment@main
         
         with:
           hide-comment: true
-          coverage-path: ./coverage.txt
+          coverage-summary-path: ./coverage/coverage-summary.json
 
       - name: Check the output coverage
         run: |
