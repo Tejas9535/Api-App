@@ -1,5 +1,6 @@
 # Jest Coverage Comment
 
+[![.github/workflows/node.js.yml](https://github.com/Tejas9535/Api-App/actions/workflows/node.js.yml/badge.svg)](https://github.com/Tejas9535/Api-App/actions/workflows/node.js.yml)
 ![Auto Updating Bagde](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Tejas9535/e77941b401d5aace94d442094fb912a7/raw/Api-App__main.json)
 ![version](https://img.shields.io/github/package-json/v/Tejas9535/Api-App)
 
