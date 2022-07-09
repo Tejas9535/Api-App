@@ -1,32 +1,78 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
-name: Node.js CI
+name: CI/CD
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master", "dev"]
   pull_request:
-    branches: [ "master" ]
+    branches: ["master", "dev"]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    
-    - run: npm run lint
-    - run: npm test
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+
+      - name: Instsall Dependecies
+        run: npm ci
+
+      - name: Run Linters
+        run: npm run lint
+
+  Coverage:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Test-Coverage
+
+        id: npm-cache
+        uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm
+
+      - name: Install Dependencies
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Run tests
+        run: |
+          npx jest --coverage --coverageReporters json-summary
+
+        id: coverageComment
+        uses: MishaKav/jest-coverage-comment@main
+
+        with:
+          hide-comment: true
+          coverage-summary-path: ./coverage/coverage-summary.json
+
+      - name: Check the output coverage
+        run: |
+          echo "Coverage Percantage - ${{ steps.coverageComment.outputs.coverage }}"
+          echo "Coverage Color - ${{ steps.coverageComment.outputs.color }}"
+          echo "Summary Html - ${{ steps.coverageComment.outputs.summaryHtml }}"
+
+      - name: Create the Badge
+        if: ${{github.ref == 'refs/heads/master' }} || ${{github.ref == 'refs/heads/dev' }}
+        uses: schneegans/dynamic-badges-action@v1.0.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: e77941b401d5aace94d442094fb912a7
+          filename: Api-App__main.json
+          label: Coverage
+          message: ${{ steps.coverageComment.outputs.coverage }}%
+          color: ${{ steps.coverageComment.outputs.color }}
+          namedLogo: React

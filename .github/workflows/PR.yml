@@ -1,0 +1,30 @@
+name: Test-Coverage For PR
+
+on:
+  pull_request:
+    branches: ["master", "dev"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: NPM Cache
+        id: npm-cache
+        uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm
+      - name: Install Dependencies
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: npm install
+
+      - name: Run tests
+        run: |
+          npx jest --coverage --coverageReporters json-summary
+
+      - name: Jest coverage comment
+        uses: MishaKav/jest-coverage-comment@main
