@@ -33,7 +33,8 @@ jobs:
 
       - name: Jest coverage comment
         id: coverageComment
-        Api-Appest-coverage-comment@main
+        uses: MishaKav/jest-coverage-comment@main
+        
         with:
           hide-comment: true
           coverage-path: ./coverage.txt
