@@ -1,8 +1,9 @@
 <h1 align="center">Welcome to API-APP 👋</h1>
-<p>
+<p align="center" >
+  <img src="https://img.shields.io/npm/v/readme-md-generator.svg?orange=blue" />
   <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
-  <a href="#" target="_blank">
-    <img alt="CI-CD: Status" src="https://github.com/Tejas9535/Api-App/actions/workflows/Build.yml/badge.svg)](https://github.com/Tejas9535/Api-App/actions/workflows/Build.yml" />
+  <a href="https://github.com/Tejas9535/Api-App/actions/workflows/Build.yml" target="_blank">
+    <img alt="CI-CD: Status" src="https://github.com/Tejas9535/Api-App/actions/workflows/Build.yml/badge.svg" />
   </a>
   <a href="#" target="_blank">
     <img alt="Test-Coverage: Status" src="https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Tejas9535/e77941b401d5aace94d442094fb912a7/raw/Api-App__main.json" />
