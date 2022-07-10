@@ -1,26 +1,49 @@
-# Jest Coverage Comment
+<h1 align="center">Welcome to API-APP 👋</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
+  <a href="#" target="_blank">
+    <img alt="CI-CD: Status" src="https://github.com/Tejas9535/Api-App/actions/workflows/Build.yml/badge.svg)](https://github.com/Tejas9535/Api-App/actions/workflows/Build.yml" />
+  </a>
+  <a href="#" target="_blank">
+    <img alt="Test-Coverage: Status" src="https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Tejas9535/e77941b401d5aace94d442094fb912a7/raw/Api-App__main.json" />
+  </a>
+  <a href="#" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+  </a>
+</p>
 
-[![.github/workflows/Build.yml](https://github.com/Tejas9535/Api-App/actions/workflows/Build.yml/badge.svg)](https://github.com/Tejas9535/Api-App/actions/workflows/Build.yml)
-![Auto Updating Bagde](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Tejas9535/e77941b401d5aace94d442094fb912a7/raw/Api-App__main.json)
-![version](https://img.shields.io/github/package-json/v/Tejas9535/Api-App)
+> Dynamic Api Calling App
 
-# Getting Started with Create React App
+### 🏠 [Homepage](https://github.com/Tejas9535/Api-App.git)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Install
 
-## Available Scripts
+```sh
+npm install
+```
 
-In the project directory, you can run:
+## Usage
 
-### `npm start`
+```sh
+npm run start
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Run tests
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```sh
+npm run test
+```
 
-### `npm test`
+## Author
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+👤 **Tejas9535**
+
+* Github: [@Tejas9535](https://github.com/Tejas9535)
+* LinkedIn: [@Tejas Chokhawala](https://linkedin.com/in/Tejas Chokhawala)
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+***
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
